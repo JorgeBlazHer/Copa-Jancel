@@ -1,16 +1,37 @@
 
 
-  console.log("INICIO");
+console.log("INICIO");
 
-  var app = angular.module('app', [
-    'ngRoute'
-    ]);
+var app = angular.module('app', [
+	'ui.router'
+	]);
 
-  app.config(function($routeProvider) {
-    $routeProvider
-    .when("/", {
-        templateUrl : "templates/scripts/home/home.html"
-    })
+app.run(function($state) {
+    $state.go('app');
+});
+
+app.config(function($stateProvider) {
+	$stateProvider		
+	.state('app', {
+	 	url: '/',		
+		views: {		
+			'layout': {templateUrl: "templates/nav_bar.html"/*,		
+        				controller:*/
+        				},
+        	'general@app': 	{templateUrl: "templates/scripts/home/home.html"/*,		
+        				controller:*/
+        				}
+
+		}		
+	})
+	.state('app.pasados', {
+	 	url: '',		
+		views: {
+			'general': 	{
+        				}		
+					
+		}		
+	})	
 });
 
  
