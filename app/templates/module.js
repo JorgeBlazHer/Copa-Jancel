@@ -27,7 +27,8 @@ app.config(function($stateProvider) {
 	.state('app.pasados', {
 	 	url: '',		
 		views: {
-			'general': 	{
+			'general': 	{templateUrl: "templates/scripts/pasados/torneos.html",		
+        				controller: "torneosPasados"
         				}		
 					
 		}		

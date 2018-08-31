@@ -16,6 +16,33 @@ app.get('/', function (req, res) {
     res.render('index.html');
 });
 
+
+app.get('/pasados', function (req, res) {
+    res.send({
+    	ligas: [
+    	{
+    		nombre: "Primera liga jancel"
+    	},
+    	{
+    		nombre: "Segunda liga jancel"
+    	},
+    	{
+    		nombre: "Tercera liga jancel"
+    	}
+    	],
+    	copas:[{
+    		nombre: "Primera copa jancel"
+    	},
+    	{
+    		nombre: "Segunda copa jancel"
+    	},
+    	{
+    		nombre: "Tercera copa jancel"
+    	}]
+    });
+});
+
+
  
 
 
