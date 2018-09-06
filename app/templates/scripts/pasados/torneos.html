@@ -1,5 +1,15 @@
 <section class="jumbotron text-center">
 	<div class="container">
 		<h1 class="jumbotron-heading">Torneos pasados</h1>
+
+		<div class="list-group">
+			<a ui-sref="app.liga({id: $index})" ng-repeat="torneo in tVM.torneos track by $index" class="list-group-item list-group-item-action">
+				<div class="float-left"><strong>{{torneo.tipo}} - {{torneo.fecha}}</strong></div>
+				<div class="float-center">{{torneo.nombre}}</div>
+				<div class="float-right">{{torneo.ganador}}</div>
+			</a>
+			
+		</div>
+
 	</div>
 </section>

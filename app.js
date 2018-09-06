@@ -19,33 +19,44 @@ app.get('/', function (req, res) {
 
 app.get('/pasados', function (req, res) {
     res.send({
-    	ligas: [
-    	{
-    		nombre: "Primera liga jancel"
-    	},
-    	{
-    		nombre: "Segunda liga jancel"
-    	},
-    	{
-    		nombre: "Tercera liga jancel"
-    	}
-    	],
-    	copas:[{
-    		nombre: "Primera copa jancel"
-    	},
-    	{
-    		nombre: "Segunda copa jancel"
-    	},
-    	{
-    		nombre: "Tercera copa jancel"
-    	}]
-    });
+        torneos: [
+        {
+          nombre: "Primera liga jancel",
+          fecha: '26/07/2018',
+          tipo: 'Liga'
+      },
+      {
+          nombre: "Segunda liga jancel",
+          fecha: '26/07/2018',
+          tipo: 'Liga'
+      },
+      {
+          nombre: "Tercera liga jancel",
+          fecha: '26/07/2018',
+          tipo: 'Liga'
+      },
+      {
+          nombre: "Primera copa jancel",
+          fecha: '26/07/2018',
+          tipo: 'Copa'
+      },
+      {
+          nombre: "Segunda copa jancel",
+          fecha: '26/07/2018',
+          tipo: 'Copa'
+      },
+      {
+          nombre: "Tercera copa jancel",
+          fecha: '26/07/2018',
+          tipo: 'Copa'
+      }]
+  });
 });
 
 
- 
+
 
 
 app.listen(port, function () {
- console.log('Express server running at http://localhost:' + port);
+   console.log('Express server running at http://localhost:' + port);
 });

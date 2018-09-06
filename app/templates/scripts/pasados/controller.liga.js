@@ -1,9 +1,9 @@
 angular
 .module('app')
-.controller('torneosPasados', torneosPasados);
+.controller('ligaPasada', ligaPasada);
 
-torneosPasados.$inject = ['pasadosFactory'];
-function torneosPasados(pasadosFactory) {
+ligaPasada.$inject = ['pasadosFactory','$stateParams'];
+function ligaPasada(pasadosFactory,$stateParams) {
 	var vm = this;
 
 	console.log("TORNEOS PASADOS");
@@ -12,7 +12,7 @@ function torneosPasados(pasadosFactory) {
 	function recuperarPasados(){
 		pasadosFactory.getPasados()
 		.then(function(response){
-			vm.torneos=response.torneos;
+			vm.torneo=response.torneos[$stateParams.id];
 			console.log(vm.torneos);
 		},function(response){
 			console.log(response);

@@ -25,10 +25,19 @@ app.config(function($stateProvider) {
 		}		
 	})
 	.state('app.pasados', {
-	 	url: '',		
+	 	url: 'pasados/',		
 		views: {
 			'general': 	{templateUrl: "templates/scripts/pasados/torneos.html",		
-        				controller: "torneosPasados"
+        				controller: "torneosPasados as tVM"
+        				}		
+					
+		}		
+	})
+	.state('app.liga', {
+	 	url: 'liga/:id',		
+		views: {
+			'general': 	{templateUrl: "templates/scripts/pasados/liga.html",		
+        				controller: "ligaPasada as lVM"
         				}		
 					
 		}		
