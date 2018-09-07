@@ -23,7 +23,34 @@ app.get('/pasados', function (req, res) {
         {
           nombre: "Primera liga jancel",
           fecha: '26/07/2018',
-          tipo: 'Liga'
+          tipo: 'Liga',
+          partidos: [{
+            local: 'jorge',
+            golesLocal: 2,
+            visitante: 'villar',
+            golesVisitante: 0},
+            {
+            local: 'jorge',
+            golesLocal: 2,
+            visitante: 'villar',
+            golesVisitante: 0},
+            {
+            local: 'jorge',
+            golesLocal: 2,
+            visitante: 'villar',
+            golesVisitante: 0},
+            {
+            local: 'jorge',
+            golesLocal: 2,
+            visitante: 'villar',
+            golesVisitante: 0},
+            {
+            local: 'jorge',
+            golesLocal: 2,
+            visitante: 'villar',
+            golesVisitante: 0},
+
+          ]
       },
       {
           nombre: "Segunda liga jancel",
