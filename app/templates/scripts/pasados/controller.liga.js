@@ -19,6 +19,41 @@ function ligaPasada(pasadosFactory,$stateParams) {
 		});
 	}
 
+	vm.tabla=
+		[
+		{nombre: "aaaa",
+		puntos: 15,
+		golesAfavor: 12,
+		golesEnContra:2
+		}
+		,
+		{nombre: "aaaa",
+		puntos: 15,
+		golesAfavor: 12,
+		golesEnContra:2
+		}
+		,
+		{nombre: "aaaa",
+		puntos: 15,
+		golesAfavor: 12,
+		golesEnContra:2
+		}
+		,
+		{nombre: "aaaa",
+		puntos: 15,
+		golesAfavor: 12,
+		golesEnContra:2}
+		,
+		{nombre: "aaaa",
+		puntos: 15,
+		golesAfavor: 12,
+		golesEnContra:2},
+		{nombre: "aaaa",
+		puntos: 15,
+		golesAfavor: 12,
+		golesEnContra:2}
+		];
+
 
 	recuperarPasados();
 

@@ -1,0 +1,1 @@
+var entorno='https://copa-jancel.herokuapp.com/';

@@ -1,6 +1,40 @@
 <section class="jumbotron text-center">
 	<div class="container">
-		<h1 class="jumbotron-heading">{{lVM.torneo}}</h1>
+		<h1 class="jumbotron-heading">{{lVM.torneo.nombre}}</h1>
+		<br>
+		<div ng-if="lVM.torneo.tipo==='Liga'">
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Nombre</th>
+			      <th scope="col">Goles a favor</th>
+			      <th scope="col">Goles en contra</th>
+			      <th scope="col">Puntos</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr ng-repeat="per in lVM.tabla track by $index">
+			      <th scope="row">{{$index+1}}ª</th>
+			      <td>{{per.nombre}}</td>
+			      <td>{{per.golesAfavor}}</td>
+			      <td>{{per.golesEnContra}}</td>
+			      <td>{{per.puntos}}</td>
+			    </tr>
+			  </tbody>
+			</table>
+
+
+
+
+		</div>
+		<div ng-if="lVM.torneo.tipo==='Copa'">
+			
+
+
+
+		</div>
+
 
 	</div>
 </section>

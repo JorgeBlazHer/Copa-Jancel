@@ -15,7 +15,7 @@
     function _getPasados() {
       var deferred = $q.defer();
 
-      var url = 'http://localhost:3000/pasados';
+      var url = entorno+'pasados';
 
       $http({
           method: 'GET',
