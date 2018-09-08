@@ -3,6 +3,8 @@
 		<h1 class="jumbotron-heading">{{lVM.torneo.nombre}}</h1>
 		<br>
 		<div ng-if="lVM.torneo.tipo==='Liga'">
+
+			<h3>Clasificación</h3>
 			<table class="table">
 			  <thead class="thead-dark">
 			    <tr>
@@ -23,6 +25,22 @@
 			    </tr>
 			  </tbody>
 			</table>
+
+			<hr class="my-4">
+			<h3>Partidos</h3>
+			<br>
+
+			<div ng-repeat="jor in lVM.torneo.partidos track by $index">
+				<h5>Jornada {{$index+1}}</h5>
+				<ul ng-repeat="par in jor" class="list-group">
+					<li  class="list-group-item">
+						{{par.local}} {{par.golesLocal}} - {{par.visitante}} {{par.golesVisitante}}
+						<span class="pull-right">{{par.fecha}}</span>
+					</li>
+				</ul>
+
+			</div>
+			
 
 
 

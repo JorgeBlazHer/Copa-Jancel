@@ -1,0 +1,38 @@
+<section class="jumbotron text-center">
+	<div class="container">
+		<h1 class="jumbotron-heading">Crear nueva liga</h1>
+		<br>
+		<form action="">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">Nombre de la liga</span>
+				</div>
+				<input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" required>
+				<div class="valid-feedback">
+					Bien
+				</div>
+			</div>
+			<hr class="my-4">
+			<h4 class="jumbotron-heading">Participantes</h4>
+			<button type="button" class="btn btn-dark" ng-click="clVM.anadir()">Añadir participante</button>
+			<br>
+			<br>
+			<div ng-repeat="part in clVM.participantes track by $index">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Nombre y equipo</span>
+					</div>
+					<input type="text" ng-model="part.nombre" placeholder="Nombre" class="form-control" required>
+					<input type="text" ng-model="part.equipo" placeholder="Equipo" class="form-control" required>
+					<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="button" ng-click="clVM.borrar($index)">Borrar</button>
+						</div>
+				</div>
+			</div>
+			<br>
+			
+			<button type="submit" class="btn btn-success" ng-click="clVM.crear()">Crear</button>
+	</form>
+
+	</div>
+</section>

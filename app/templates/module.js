@@ -41,7 +41,16 @@ app.config(function($stateProvider) {
         				}		
 					
 		}		
-	})	
+	})
+	.state('app.crearLiga', {
+	 	url: 'crearLiga/',		
+		views: {
+			'general': 	{templateUrl: "templates/scripts/crearLiga/crearLiga.html",		
+        				controller: "crearLiga as clVM"
+        				}		
+					
+		}		
+	})		
 });
 
  
