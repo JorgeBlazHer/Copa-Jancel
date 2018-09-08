@@ -8,6 +8,17 @@ function ligaPasada(pasadosFactory,$stateParams) {
 
 	console.log("TORNEOS PASADOS");
 
+
+
+	function buscarIndex(name,tabla){
+		for(var i=0;i<tabla.length;i++){
+			if(name===tabla[i].nombre){
+				return i;
+			}
+		}
+		return -1;
+	}
+
 	vm.tabla=[];
 	function recuperarPasados(){
 		pasadosFactory.getPasados()
@@ -39,49 +50,33 @@ function ligaPasada(pasadosFactory,$stateParams) {
 					vm.tabla.push({nombre: element.visitante,puntos: 0,golesAfavor: 0,golesEnContra:0});
 				}
 
+
+				var indexLocal=buscarIndex(element.local,vm.tabla);
+				var indexVisitante=buscarIndex(element.visitante,vm.tabla);
+
+				if(element.golesLocal>element.golesVisitante){
+					vm.tabla[indexLocal].puntos=vm.tabla[indexLocal].puntos+3;
+				}
+				else if(element.golesLocal>element.golesVisitante){
+					vm.tabla[indexVisitante].puntos=vm.tabla[indexVisitante].puntos+3;
+				}
+				else{
+					vm.tabla[indexLocal].puntos=vm.tabla[indexLocal].puntos+1;
+					vm.tabla[indexVisitante].puntos=vm.tabla[indexVisitante].puntos+1;
+				}
+
+				vm.tabla[indexLocal].golesAfavor=vm.tabla[indexLocal].golesAfavor+element.golesLocal;
+				vm.tabla[indexLocal].golesEnContra=vm.tabla[indexLocal].golesEnContra+element.golesVisitante;
+
+				vm.tabla[indexVisitante].golesAfavor=vm.tabla[indexVisitante].golesAfavor+element.golesVisitante;
+				vm.tabla[indexVisitante].golesEnContra=vm.tabla[indexVisitante].golesEnContra+element.golesLocal;
+
 			});
 			
 		},function(response){
 			console.log(response);
 		});
 	}
-
-
-
-	// vm.tabla=
-	// 	[
-	// 	{nombre: "aaaa",
-	// 	puntos: 15,
-	// 	golesAfavor: 12,
-	// 	golesEnContra:2
-	// 	}
-	// 	,
-	// 	{nombre: "aaaa",
-	// 	puntos: 15,
-	// 	golesAfavor: 12,
-	// 	golesEnContra:2
-	// 	}
-	// 	,
-	// 	{nombre: "aaaa",
-	// 	puntos: 15,
-	// 	golesAfavor: 12,
-	// 	golesEnContra:2
-	// 	}
-	// 	,
-	// 	{nombre: "aaaa",
-	// 	puntos: 15,
-	// 	golesAfavor: 12,
-	// 	golesEnContra:2}
-	// 	,
-	// 	{nombre: "aaaa",
-	// 	puntos: 15,
-	// 	golesAfavor: 12,
-	// 	golesEnContra:2},
-	// 	{nombre: "aaaa",
-	// 	puntos: 15,
-	// 	golesAfavor: 12,
-	// 	golesEnContra:2}
-	// 	];
 	
 	recuperarPasados();
 

@@ -36,7 +36,7 @@ app.config(function($stateProvider) {
 	.state('app.liga', {
 	 	url: 'liga/:id',		
 		views: {
-			'general': 	{templateUrl: "templates/scripts/pasados/liga.html",		
+			'general': 	{templateUrl: "templates/scripts/liga/liga.html",		
         				controller: "ligaPasada as lVM"
         				}		
 					
