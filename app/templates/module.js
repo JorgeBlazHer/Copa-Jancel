@@ -33,11 +33,29 @@ app.config(function($stateProvider) {
 					
 		}		
 	})
+	.state('app.actuales', {
+	 	url: 'en_curso/',		
+		views: {
+			'general': 	{templateUrl: "templates/scripts/actuales/actuales.html",		
+        				controller: "torneosActuales as tVM"
+        				}		
+					
+		}		
+	})
 	.state('app.liga', {
 	 	url: 'liga/:id',		
 		views: {
 			'general': 	{templateUrl: "templates/scripts/liga/liga.html",		
         				controller: "ligaPasada as lVM"
+        				}		
+					
+		}		
+	})
+	.state('app.actual', {
+	 	url: 'en_curso/:id',		
+		views: {
+			'general': 	{templateUrl: "templates/scripts/ligaEnCurso/ligaEnCurso.html",		
+        				controller: "ligaEnCurso as lVM"
         				}		
 					
 		}		
