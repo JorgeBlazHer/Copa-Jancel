@@ -2,8 +2,8 @@ angular
 .module('app')
 .controller('crearLiga', crearLiga);
 
-crearLiga.$inject = [];
-function crearLiga() {
+crearLiga.$inject = ['$scope','crearLigaFactory'];
+function crearLiga($scope,crearLigaFactory) {
 	var vm = this;
 
 	console.log("CREAR LIGA");
@@ -15,7 +15,20 @@ function crearLiga() {
 	}
 
 	vm.crear=function() {
-		console.log(crearJornadas(vm.participantes));
+		if($scope.nombre){
+			var jornadas=crearJornadas(vm.participantes)
+			var torneo={
+				nombre: $scope.nombre,
+				tipo: "Liga",
+				partidos: jornadas
+			};
+			console.log(torneo);
+			crearLigaFactory.nueva(torneo)
+			.then(function (response) {
+				alert("bien");
+			});
+		}
+		
 	}
 
 	vm.borrar=function(i) {

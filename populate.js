@@ -27,6 +27,20 @@ const Torneos = sequelize.define('torneos', {
   
 });
 
+const torneosEnCurso = sequelize.define('torneosEnCurso', {
+
+    nombre: {
+		type: Sequelize.STRING
+	},
+	tipo: {
+	    type: Sequelize.STRING
+	},
+	partidos: {
+		type: Sequelize.ARRAY(Sequelize.JSON)
+	}
+  
+});
+
 
 
 Torneos.sync({force: true}).then(() => {
@@ -69,3 +83,6 @@ Torneos.sync({force: true}).then(() => {
   
   });
 });
+
+
+torneosEnCurso.sync({force: true});

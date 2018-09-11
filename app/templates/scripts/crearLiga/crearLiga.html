@@ -7,7 +7,7 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="basic-addon1">Nombre de la liga</span>
 				</div>
-				<input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" required>
+				<input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" ng-model="nombre" required>
 				<div class="valid-feedback">
 					Bien
 				</div>
@@ -31,7 +31,7 @@
 			</div>
 			<br>
 			
-			<button type="submit" class="btn btn-success" ng-click="clVM.crear()">Crear</button>
+			<button  class="btn btn-success" ng-click="clVM.crear()">Crear</button>
 	</form>
 
 	</div>
