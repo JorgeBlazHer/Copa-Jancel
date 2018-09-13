@@ -63,20 +63,8 @@ const Torneos = sequelize.define('torneos', {
   fecha: {
     type: Sequelize.DATE
   },
-  partidos: {
-    type: Sequelize.ARRAY(Sequelize.JSON)
-  }
-
-});
-
-
-const torneosEnCurso = sequelize.define('torneosEnCurso', {
-
-  nombre: {
-    type: Sequelize.STRING
-  },
-  tipo: {
-    type: Sequelize.STRING
+  cerrado: {
+    type: Sequelize.BOOLEAN
   },
   partidos: {
     type: Sequelize.ARRAY(Sequelize.JSON)
@@ -86,30 +74,50 @@ const torneosEnCurso = sequelize.define('torneosEnCurso', {
 
 
 app.get('/enCurso', function (req, res) {
-  torneosEnCurso.findAll().then(users => {
+  Torneos.findAll({
+    where: {
+      cerrado: false
+    }
+  }).then(users => {
     res.send({ torneos: users });
   })
 });
 
 
 app.get('/pasados', function (req, res) {
-  Torneos.findAll().then(users => {
+  Torneos.findAll({
+    where: {
+      cerrado: true
+    }
+  }).then(users => {
     res.send({ torneos: users });
   })
 });
 
 app.post('/pasados', function (req, res) {
+  
+  req.body.cerrado=true;
+  var datetime = new Date();
+  req.body.fecha=datetime;
   console.log(req.body);
-  Torneos.bulkCreate([
-    req.body
-  ]);
+  var id=req.body.id;
+  Torneos.update(
+    {cerrado: true,
+    partidos: req.body.partidos,
+    fecha: datetime},
+    {where: {id: id}}
+  );
+
+
+
+
   res.send("ok");
 });
 
 
 
 app.post('/enCurso', function (req, res) {
-  torneosEnCurso.bulkCreate([
+  Torneos.bulkCreate([
     req.body
   ]);
   console.log(req.body);

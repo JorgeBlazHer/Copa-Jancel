@@ -21,6 +21,9 @@ const Torneos = sequelize.define('torneos', {
 	fecha: {
 		type: Sequelize.DATE
 	},
+    cerrado: {
+      type: Sequelize.BOOLEAN
+    },
 	partidos: {
 		type: Sequelize.ARRAY(Sequelize.JSON)
 	}
@@ -43,46 +46,46 @@ const torneosEnCurso = sequelize.define('torneosEnCurso', {
 
 
 
-Torneos.sync({force: true}).then(() => {
-  // Table created
-  return Torneos.create({
-          nombre: "Primera liga jancel",
-          fecha: '2010-09-02',
-          tipo: 'Liga',
-          partidos: [[{
-            local: 'jorge',
-            golesLocal: 2,
-            visitante: 'villar',
-            golesVisitante: 0,
-            jornada: 1},
-            {
-            local: 'jorge',
-            golesLocal: 2,
-            visitante: 'villar',
-            golesVisitante: 0,
-            jornada: 1}],
+// Torneos.sync({force: true}).then(() => {
+//   // Table created
+//   return Torneos.create({
+//           nombre: "Primera liga jancel",
+//           fecha: '2010-09-02',
+//           tipo: 'Liga',
+//           partidos: [[{
+//             local: 'jorge',
+//             golesLocal: 2,
+//             visitante: 'villar',
+//             golesVisitante: 0,
+//             jornada: 1},
+//             {
+//             local: 'jorge',
+//             golesLocal: 2,
+//             visitante: 'villar',
+//             golesVisitante: 0,
+//             jornada: 1}],
 
-            [{
-            local: 'jorge',
-            golesLocal: 2,
-            visitante: 'villar',
-            golesVisitante: 0,
-            jornada: 2}],
-            [{
-            local: 'jorge',
-            golesLocal: 2,
-            visitante: 'villar',
-            golesVisitante: 0,
-            jornada: 3},
-            {
-            local: 'jorge',
-            golesLocal: 2,
-            visitante: 'villar',
-            golesVisitante: 0,
-            jornada: 3}]]
+//             [{
+//             local: 'jorge',
+//             golesLocal: 2,
+//             visitante: 'villar',
+//             golesVisitante: 0,
+//             jornada: 2}],
+//             [{
+//             local: 'jorge',
+//             golesLocal: 2,
+//             visitante: 'villar',
+//             golesVisitante: 0,
+//             jornada: 3},
+//             {
+//             local: 'jorge',
+//             golesLocal: 2,
+//             visitante: 'villar',
+//             golesVisitante: 0,
+//             jornada: 3}]]
   
-  });
-});
+//   });
+// });
 
 
-torneosEnCurso.sync({force: true});
+Torneos.sync({force: true});

@@ -80,6 +80,7 @@ function ligaEnCurso(actualesFactory, $stateParams,ligaEnCursoFactory) {
 
 	vm.guardar=function () {
 		console.log(vm.torneo);
+		
 		ligaEnCursoFactory.guardar(vm.torneo)
 		.then(function (response) {
 			alert("guardado");

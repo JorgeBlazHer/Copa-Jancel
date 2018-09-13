@@ -6,7 +6,7 @@
 
 			<h3>Clasificación</h3>
 			<table class="table">
-			  <thead class="thead-dark">
+			  <thead class="thead-dark hidden-sm-down">
 			    <tr>
 			      <th scope="col">#</th>
 			      <th scope="col">Nombre</th>
@@ -14,9 +14,18 @@
 			      <th scope="col">Goles en contra</th>
 			      <th scope="col">Puntos</th>
 			    </tr>
-			  </thead>
+				</thead>
+				<!-- <thead class="thead-dark show-sm-down">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">AF</th>
+							<th scope="col">EC</th>
+							<th scope="col">Puntos</th>
+						</tr>
+					</thead> -->
 			  <tbody>
-			    <tr ng-repeat="per in lVM.tabla track by $index">
+			    <tr ng-repeat="per in lVM.tabla | orderBy: '-puntos' track by $index">
 			      <th scope="row">{{$index+1}}ª</th>
 			      <td>{{per.nombre}}</td>
 			      <td>{{per.golesAfavor}}</td>
@@ -34,7 +43,7 @@
 				<h5>Jornada {{$index+1}}</h5>
 				<ul ng-repeat="par in jor" class="list-group">
 					<li  class="list-group-item">
-						{{par.local}} {{par.golesLocal}} - {{par.visitante}} {{par.golesVisitante}}
+						<strong>{{par.local}}</strong> {{par.golesLocal}} - {{par.golesVisitante}} <strong>{{par.visitante}} </strong>
 						<span class="pull-right">{{par.fecha}}</span>
 					</li>
 				</ul>

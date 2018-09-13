@@ -20,7 +20,8 @@ function crearLiga($scope,crearLigaFactory) {
 			var torneo={
 				nombre: $scope.nombre,
 				tipo: "Liga",
-				partidos: jornadas
+				partidos: jornadas,
+				cerrado: false
 			};
 			console.log(torneo);
 			crearLigaFactory.nueva(torneo)
