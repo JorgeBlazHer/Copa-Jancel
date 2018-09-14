@@ -95,11 +95,6 @@ app.get('/pasados', function (req, res) {
 });
 
 app.post('/pasados', function (req, res) {
-  
-  req.body.cerrado=true;
-  var datetime = new Date();
-  req.body.fecha=datetime;
-  console.log(req.body);
   var id=req.body.id;
   Torneos.update(
     {cerrado: true,
@@ -107,10 +102,19 @@ app.post('/pasados', function (req, res) {
     fecha: datetime},
     {where: {id: id}}
   );
+  res.send("ok");
+});
 
 
 
 
+app.post('/actualizar', function (req, res) {
+  var id=req.body.id;
+  Torneos.update(
+    {cerrado: false,
+    partidos: req.body.partidos},
+    {where: {id: id}}
+  );
   res.send("ok");
 });
 
@@ -123,6 +127,19 @@ app.post('/enCurso', function (req, res) {
   console.log(req.body);
   res.send("ok");
 });
+
+
+
+app.post('/borrarEnCurso', function (req, res) {
+  var id=req.body.id;
+  console.log(id);
+  Torneos.destroy(
+    {where: {id: id}}
+  );
+  console.log(req.body);
+  res.send("ok");
+});
+
 
 
 

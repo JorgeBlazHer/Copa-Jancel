@@ -18,7 +18,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="per in lVM.tabla | orderBy: '-puntos' track by $index ">
+						<tr ng-repeat="per in lVM.tabla | orderBy: ['-puntos','-golesAfavor-golesEnContra'] track by $index ">
 							<th scope="row">{{$index+1}}ª</th>
 							<td>{{per.nombre}}</td>
 							<td>{{per.golesAfavor}}</td>
@@ -27,8 +27,9 @@
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-warning" ng-click="lVM.actualizarTabla()">Actualizar</button>
-				<button type="button" class="btn btn-warning" ng-click="lVM.guardar()">Guardar</button>
+				<button type="button" class="btn btn-success" ng-click="lVM.actualizar()">Actualizar</button>
+				<button type="button" class="btn btn-warning" ng-click="lVM.guardar()">Acabar</button>
+				<button type="button" class="btn btn-danger" ng-click="lVM.borrar()">Borrar</button>
 			</div>
 			<div class="col-sm-6">
 				<h3>Partidos</h3>

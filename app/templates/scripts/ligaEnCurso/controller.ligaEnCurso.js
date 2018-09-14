@@ -52,7 +52,7 @@ function ligaEnCurso(actualesFactory, $stateParams,ligaEnCursoFactory) {
 						vm.tabla.push({ nombre: element.visitante, puntos: 0, golesAfavor: 0, golesEnContra: 0 });
 					}
 
-				if (element.golesVisitante && element.golesLocal) {
+				if ((element.golesVisitante || element.golesVisitante===0) && (element.golesLocal || element.golesLocal===0)) {
 					var indexLocal = buscarIndex(element.local, vm.tabla);
 					var indexVisitante = buscarIndex(element.visitante, vm.tabla);
 
@@ -79,14 +79,35 @@ function ligaEnCurso(actualesFactory, $stateParams,ligaEnCursoFactory) {
 	}
 
 	vm.guardar=function () {
-		console.log(vm.torneo);
-		
 		ligaEnCursoFactory.guardar(vm.torneo)
 		.then(function (response) {
 			alert("guardado");
 
 		}, function (response) {
 			alert("no guardado");
+		});
+	};
+
+
+	vm.actualizar=function () {
+		vm.actualizarTabla();
+		ligaEnCursoFactory.actualizar(vm.torneo)
+		.then(function (response) {
+
+		}, function (response) {
+			alert("no guardado");
+		});
+	};
+
+
+	vm.borrar=function () {
+		console.log(vm.torneo);
+		ligaEnCursoFactory.borrar(vm.torneo)
+		.then(function (response) {
+			alert("borrado");
+
+		}, function (response) {
+			alert("no borrado");
 		});
 	};
 
