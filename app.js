@@ -72,26 +72,18 @@ const Torneos = sequelize.define('torneos', {
 
 });
 
+const torneosPasados=[];
+
+const torneosEnCurso=[];
+
 
 app.get('/enCurso', function (req, res) {
-  Torneos.findAll({
-    where: {
-      cerrado: false
-    }
-  }).then(users => {
-    res.send({ torneos: users });
-  })
+  res.send({torneos: torneosEnCurso});
 });
 
 
 app.get('/pasados', function (req, res) {
-  Torneos.findAll({
-    where: {
-      cerrado: true
-    }
-  }).then(users => {
-    res.send({ torneos: users });
-  })
+  res.send({torneos: torneosPasados});
 });
 
 app.post('/pasados', function (req, res) {
@@ -112,22 +104,19 @@ app.post('/pasados', function (req, res) {
 
 app.post('/actualizar', function (req, res) {
   var id = req.body.id;
-  Torneos.update(
-    {
-      cerrado: false,
-      partidos: req.body.partidos
-    },
-    { where: { id: id } }
-  );
+  torneosEnCurso.forEach(tor => {
+    if(tor.id===id){
+      tor.partidos=req.body.partidos;
+    }
+  });
   res.send("ok");
 });
 
 
 
 app.post('/enCurso', function (req, res) {
-  Torneos.bulkCreate([
-    req.body
-  ]);
+
+  torneosEnCurso.push(req.body);
   console.log(req.body);
   res.send("ok");
 });
