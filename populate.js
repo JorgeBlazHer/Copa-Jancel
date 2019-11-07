@@ -50,6 +50,7 @@ const torneosEnCurso = sequelize.define('torneosEnCurso', {
 
 Torneos.sync({ force: true }).then(() => {
 	// Table created
+	console.log("llego2");
 	return Torneos.create({
 		nombre: "Primera liga jancel",
 		fecha: '2010-09-02',
@@ -96,5 +97,5 @@ Torneos.sync({ force: true }).then(() => {
 
 console.log("llego2");
 
-Torneos.sync({ force: true });
+//Torneos.sync({ force: true });
 console.log("llego3");

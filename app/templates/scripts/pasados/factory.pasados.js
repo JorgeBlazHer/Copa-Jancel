@@ -23,9 +23,11 @@
           url: url
         })
         .then(function(response) {
+          console.log("torneos pasados bien")
           deferred.resolve(response.data);
         })
         .catch(function(error) {
+          console.log("torneos pasados mal")
           deferred.reject(error);
         });
 
