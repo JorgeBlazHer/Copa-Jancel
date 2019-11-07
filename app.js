@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 
 const Sequelize = require('sequelize');
 
-sequelize = new Sequelize(connectionString, {
+sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
   protocol: 'postgres',
   dialectOptions: {
@@ -37,7 +37,7 @@ sequelize = new Sequelize(connectionString, {
 });
 
 // Or you can simply use a connection uri
-sequelize = new Sequelize(connectionString);
+//sequelize = new Sequelize(connectionString);
 
 sequelize
   .authenticate()
