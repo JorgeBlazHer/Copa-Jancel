@@ -3,8 +3,6 @@ var express = require('express');
 const bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
-var connectionString = "postgres://tjkwdwmllojrsg:4a7c36245d5954228dbc17b32af347033509258647ba6bf34929912bee373632@ec2-174-129-252-240.compute-1.amazonaws.com:5432/d1742ns7op2m37";
-
 var app = express();
 
 
