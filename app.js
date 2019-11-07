@@ -24,54 +24,6 @@ app.get('/', function (req, res) {
   res.render('index.html');
 });
 
-
-
-const Sequelize = require('sequelize');
-
-sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  protocol: 'postgres',
-  dialectOptions: {
-    ssl: true
-  }
-});
-
-// Or you can simply use a connection uri
-//sequelize = new Sequelize(connectionString);
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-    app.listen(port, function () {
-      console.log('Express server running at http://localhost:' + port);
-    });
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-
-
-const Torneos = sequelize.define('torneos', {
-
-  nombre: {
-    type: Sequelize.STRING
-  },
-  tipo: {
-    type: Sequelize.STRING
-  },
-  fecha: {
-    type: Sequelize.DATE
-  },
-  cerrado: {
-    type: Sequelize.BOOLEAN
-  },
-  partidos: {
-    type: Sequelize.ARRAY(Sequelize.JSON)
-  }
-
-});
-
 const torneosPasados=[];
 
 const torneosEnCurso=[];
@@ -88,14 +40,17 @@ app.get('/pasados', function (req, res) {
 
 app.post('/pasados', function (req, res) {
   var id = req.body.id;
-  Torneos.update(
-    {
-      cerrado: true,
-      partidos: req.body.partidos,
-      fecha: datetime
-    },
-    { where: { id: id } }
-  );
+
+  var i=0;
+  var sal=0;
+  torneosEnCurso.forEach(tor => {
+    if(tor.id===id){
+      torneosPasados.push(tor);
+      sal=i
+    }
+    i++;
+  });
+  torneosEnCurso.splice( sal, 1 );
   res.send("ok");
 });
 
@@ -117,7 +72,6 @@ app.post('/actualizar', function (req, res) {
 app.post('/enCurso', function (req, res) {
 
   torneosEnCurso.push(req.body);
-  console.log(req.body);
   res.send("ok");
 });
 
@@ -126,14 +80,20 @@ app.post('/enCurso', function (req, res) {
 app.post('/borrarEnCurso', function (req, res) {
   var id = req.body.id;
   console.log(id);
-  Torneos.destroy(
-    { where: { id: id } }
-  );
-  console.log(req.body);
+
+  torneosEnCurso.forEach(tor => {
+    if(tor.id===id){
+      sal=i
+    }
+    i++;
+  });
+  torneosEnCurso.splice( sal, 1 );
   res.send("ok");
 });
 
 
 
-
+app.listen(port, function () {
+  console.log('Express server running at http://localhost:' + port);
+});
 
