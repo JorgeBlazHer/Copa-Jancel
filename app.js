@@ -3,7 +3,7 @@ var express = require('express');
 const bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
-var connectionString = "postgres://tturhiullmzyls:105d77932273efa8512035b31c8a0f0d121e5c2213cc03df69b761285a391de5@ec2-50-16-196-138.compute-1.amazonaws.com:5432/d4dmvoj2d7e3at";
+var connectionString = "postgres://tjkwdwmllojrsg:4a7c36245d5954228dbc17b32af347033509258647ba6bf34929912bee373632@ec2-174-129-252-240.compute-1.amazonaws.com:5432/d1742ns7op2m37";
 
 var app = express();
 
@@ -37,7 +37,7 @@ sequelize = new Sequelize(connectionString, {
 });
 
 // Or you can simply use a connection uri
-//const sequelize = new Sequelize(connectionString);
+sequelize = new Sequelize(connectionString);
 
 sequelize
   .authenticate()
@@ -95,12 +95,14 @@ app.get('/pasados', function (req, res) {
 });
 
 app.post('/pasados', function (req, res) {
-  var id=req.body.id;
+  var id = req.body.id;
   Torneos.update(
-    {cerrado: true,
-    partidos: req.body.partidos,
-    fecha: datetime},
-    {where: {id: id}}
+    {
+      cerrado: true,
+      partidos: req.body.partidos,
+      fecha: datetime
+    },
+    { where: { id: id } }
   );
   res.send("ok");
 });
@@ -109,11 +111,13 @@ app.post('/pasados', function (req, res) {
 
 
 app.post('/actualizar', function (req, res) {
-  var id=req.body.id;
+  var id = req.body.id;
   Torneos.update(
-    {cerrado: false,
-    partidos: req.body.partidos},
-    {where: {id: id}}
+    {
+      cerrado: false,
+      partidos: req.body.partidos
+    },
+    { where: { id: id } }
   );
   res.send("ok");
 });
@@ -131,10 +135,10 @@ app.post('/enCurso', function (req, res) {
 
 
 app.post('/borrarEnCurso', function (req, res) {
-  var id=req.body.id;
+  var id = req.body.id;
   console.log(id);
   Torneos.destroy(
-    {where: {id: id}}
+    { where: { id: id } }
   );
   console.log(req.body);
   res.send("ok");
